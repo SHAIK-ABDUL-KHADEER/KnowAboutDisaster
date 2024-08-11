@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Awareness Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <h2>Know More About Natural Disasters</h2>
+            <div class="disaster-container" data-disaster="hurricane">Hurricanes</div>
+            <div class="disaster-container" data-disaster="earthquake">Earthquakes</div>
+            <div class="disaster-container" data-disaster="flood">Floods</div>
+            <div class="disaster-container" data-disaster="wildfire">Wildfires</div>
+            <!-- Add more disasters as needed -->
+        </div>
+
+        <!-- Center Section -->
+        <div class="center-section">
+            <h1>Welcome to Our Disaster Awareness Dashboard</h1>
+
+            <h2>Hello, {{ username }}!</h2>
+            <p>Click the button below to get your current location and upload disaster information.</p>
+            <input type="button" value="Get Location" id="get-location">
+            <input type="text" id="latitude" placeholder="Latitude" readonly>
+            <input type="text" id="longitude" placeholder="Longitude" readonly>
+            <input type="text" id="disaster-name" placeholder="Disaster Name">
+            <input type="button" value="Submit" id="submit-location">
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <h2>Notifications</h2>
+            <div id="notifications-container">
+                <!-- Notifications will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="disaster-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="disaster-title">Disaster Title</h2>
+            <p id="disaster-description">Description of the disaster...</p>
+            <p>Wanna know more about it? Then ask your questions in the chatbox below.</p>
+            <div id="chat-container">
+                <textarea id="chat-input" rows="5" placeholder="Ask your question..."></textarea>
+                <button id="send-message">Send</button>
+                <div id="chatBox"></div> <!-- Updated ID to match JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
